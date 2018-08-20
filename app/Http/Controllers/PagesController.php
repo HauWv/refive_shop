@@ -1,5 +1,6 @@
 <?php
 
+//这个控制器仅用于页面的跳转作用
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

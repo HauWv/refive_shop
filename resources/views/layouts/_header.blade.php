@@ -23,7 +23,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                <img src="https://fsdhubcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" class="img-responsive img-circle" width="30px" height="30px">
+                                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534656385450&di=4a49fd00a0d5f1b99db3cd227e019dd2&imgtype=0&src=http%3A%2F%2Fuserimg.yingyonghui.com%2Fhead%2F85%2F1426617653816%2F2335885.png-thumb" class="img-responsive img-circle" width="30px" height="30px">
                             </span>
 
                             {{ Auth::user()->name }} <span class="caret"></span>
