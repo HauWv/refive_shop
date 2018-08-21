@@ -11,6 +11,7 @@ use Mail;
 use Exception;
 use App\Models\User;
 use Cache;
+use App\Exceptions\InvalidRequestException;
 
 class EmailVerificationController extends Controller
 {
@@ -23,14 +24,14 @@ class EmailVerificationController extends Controller
         //对获取的信息进行验证
          //如果有一个值不存在，则：
     	if(!$email | !$token){
-    		throw new Exception('验证链接不正确');
+    		throw new InvalidRequestException('验证链接不正确');
     	}
          //从缓存中读取数据
     	if($token != Cache::get('email_verification_'.$email)){
-    		throw new Exception('验证链接不正确或已经过期');
+    		throw new InvalidRequestException('验证链接不正确或已经过期');
     	}
     	if(!$user = User::where('email',$email)->first()){
-    		throw new Exception('用户不存在');
+    		throw new InvalidRequestException('用户不存在');
     	}
     	//将指定的key从缓存中删除
     	Cache::forget('email_verified_'.$email);
@@ -47,7 +48,7 @@ class EmailVerificationController extends Controller
     	$user = $request->user();
     	//判断用户是否已经激活
     	if($user->email_verified){
-    		throw new Exception('您已经验证过邮箱了');
+    		throw new InvalidRequestException('您已经验证过邮箱了');
     	}
     	//调用notify()方法用来发送我们定义好的通知类
     	$user->notify(new EmailVerificationNote());
