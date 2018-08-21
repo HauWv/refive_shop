@@ -27,6 +27,6 @@ Route::group(['middleware'=>'auth'],function(){
 	 * 登陆并且完成邮箱激活才能进入的页面
 	 */
 	Route::group(['middleware'=>'email_verified'],function(){
-		
+		Route::get('user_addresses','UserAddressesController@index')->name('user_addresses.index');
 	});
 });

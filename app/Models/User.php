@@ -33,4 +33,9 @@ class User extends Authenticatable
 
     //表示给字段赋予默认的值
     protected $attributes = [];
+
+    public function addresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
 }
