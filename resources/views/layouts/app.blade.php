@@ -22,5 +22,6 @@
     <!-- JS 脚本 -->
     <!-- mix()是laravel mix的前端处理功能，它会将JS/CSS等存在的各种依赖打包成一个文件，让浏览器可以一次请求 -->
     <script src="{{ mix('js/app.js') }}"></script>
+    @yield('scriptsAfterJs')
 </body>
 </html>
