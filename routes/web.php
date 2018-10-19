@@ -11,26 +11,28 @@
 |
 */
 
-//name是用于前台页面跳转，可以用{{route('name')}}，代替链接
+//主页面
 Route::get('/','PagesController@root')->name('root');
+
 
 //这个路由包含了Login/Register/Resetpassword/Forgotpassword控制器
 Auth::routes();
 
-//auth是系统自带，用于检测用户是否登陆，即以下页面都要登陆后才能显示（否则返回登陆页面）
+
+//登陆才可访问的页面；这个中件间也可以在控制器的__construct()中设置（用$this->middleware('中件间名',['except/only'=>[]]))
 Route::group(['middleware'=>'auth'],function(){
-	Route::get('/email_verify_notice','PagesController@emailVerifyNotice')->name('email_verify_notice');//命名规则：路径.方法
+	//请验证邮箱的静态页
+	Route::get('/email_verify_notice','PagesController@emailVerifyNotice')->name('email_verify_notice');
+
+	//邮箱验证逻辑
 	Route::get('/email_verification/verify','EmailVerificationController@verify')->name('email_verification.verify'); 
 	Route::get('/email_verification/send','EmailVerificationController@send')->name('email_verification.send');
-	
-	/**
-	 * 登陆并且完成邮箱激活才能进入的页面
-	 */
+
+	//再嵌套一层中间件，指登录并且完成邮箱激活才能进入的页面
 	Route::group(['middleware'=>'email_verified'],function(){
 		Route::get('user_addresses','UserAddressesController@index')->name('user_addresses.index');
 		Route::get('user_addresses/create','UserAddressesController@create')->name('user_addresses.create');
 		Route::post('user_addresses','UserAddressesController@store')->name('user_addresses.store');
-		//这里{}的参数，必须与控制器中传回的变量名一致才行
 		Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit');
 		Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');
 		Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');

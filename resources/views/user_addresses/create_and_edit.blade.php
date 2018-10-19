@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@section('title',($address->id?'修改':'新增').'收货地址')
+
+@section('title',($address->id?'修改':'新增').'收货地址') <!-- $address->id当修改时为有值，因为控制器返回给模板的是当前地址；新建的时候无值，因为控制器是新建一个空的地址对象 -->
 
 
 @section('content')

@@ -6,6 +6,7 @@ namespace App\Http\Requests;
 class UserAddressRequest extends Request
 {
 
+    //定义验证规则
     public function rules()
     {
         return [
@@ -19,7 +20,7 @@ class UserAddressRequest extends Request
         ];
     }
 
-    //定义规则的显示名
+    //传递给$error时，字段实际显示的名称
     public function attributes()
     {
         return [

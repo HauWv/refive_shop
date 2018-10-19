@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Laravel-admin',
+    'name' => 'MALLIY',
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin mini logo
+    | 小图标
     |--------------------------------------------------------------------------
     |
     | The logo of all admin pages when the sidebar menu is collapsed. You can
@@ -38,7 +38,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin route settings
+    | 路由配置
     |--------------------------------------------------------------------------
     |
     | The routing configuration of the admin page, including the path prefix,
@@ -47,17 +47,17 @@ return [
     |
     */
     'route' => [
-
+        //路由前缀
         'prefix' => 'admin',
-
+        //控制器命名空间
         'namespace' => 'App\\Admin\\Controllers',
-
+        //默认中间件
         'middleware' => ['web', 'admin'],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin install directory
+    | 安装目录
     |--------------------------------------------------------------------------
     |
     | The installation directory of the controller and routing configuration
@@ -69,17 +69,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin html title
+    | 页面标题
     |--------------------------------------------------------------------------
     |
     | Html title for all pages.
     |
     */
-    'title' => 'Lavarel管理后台',
+    'title' => 'MALLIY管理后台',
 
     /*
     |--------------------------------------------------------------------------
-    | Access via `https`
+    | 是否使用https
     |--------------------------------------------------------------------------
     |
     | If your page is going to be accessed via https, set it to `true`.
@@ -89,7 +89,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin auth setting
+    | Laravel-admin 用户登录设置
     |--------------------------------------------------------------------------
     |
     | Authentication settings for all admin pages. Include an authentication
@@ -114,7 +114,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin upload setting
+    | 文件上传设置
     |--------------------------------------------------------------------------
     |
     | File system configuration for form upload files and images, including
@@ -135,7 +135,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin database settings
+    | 数据库设置
     |--------------------------------------------------------------------------
     |
     | Here are database settings for laravel-admin builtin model & tables.
@@ -143,22 +143,22 @@ return [
     */
     'database' => [
 
-        // Database connection for following tables.
+        // 数据库连接名称（留空即可）.
         'connection' => '',
 
-        // User tables and model.
+        // 管理员用户及模型.
         'users_table' => 'admin_users',
         'users_model' => Encore\Admin\Auth\Database\Administrator::class,
 
-        // Role table and model.
+        // 角色表及模型.
         'roles_table' => 'admin_roles',
         'roles_model' => Encore\Admin\Auth\Database\Role::class,
 
-        // Permission table and model.
+        // 权限表及模型.
         'permissions_table' => 'admin_permissions',
         'permissions_model' => Encore\Admin\Auth\Database\Permission::class,
 
-        // Menu table and model.
+        // 菜单表及模型.
         'menu_table' => 'admin_menu',
         'menu_model' => Encore\Admin\Auth\Database\Menu::class,
 
@@ -172,7 +172,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User operation log setting
+    | 操作日志设置
     |--------------------------------------------------------------------------
     |
     | By setting this option to open or close operation log in laravel-admin.
@@ -183,7 +183,7 @@ return [
         'enable' => true,
 
         /*
-         * Routes that will not log to database.
+         * 不记操作日志的路由.
          *
          * All method to path like: admin/auth/logs
          * or specific method to path like: get:admin/auth/logs.
@@ -195,7 +195,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Skin
+    | 页面风格
     |--------------------------------------------------------------------------
     |
     | This value is the skin of admin pages.
@@ -211,7 +211,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application layout
+    | 页面布局
     |--------------------------------------------------------------------------
     |
     | This value is the layout of admin pages.
@@ -225,7 +225,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Login page background image
+    | 登陆页面背景图片
     |--------------------------------------------------------------------------
     |
     | This value is used to set the background image of login page.
@@ -245,7 +245,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Settings for extensions.
+    | 扩展设置.
     |--------------------------------------------------------------------------
     |
     | You can find all available extensions here

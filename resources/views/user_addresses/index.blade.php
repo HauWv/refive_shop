@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', '收货地址列表')
-
 @section('content')
 <div class="row">
 <div class="col-lg-10 col-lg-offset-1">
@@ -46,6 +45,9 @@
 </div>
 @endsection
 
+
+
+<!-- ----------删除提示的JS片段，随后被app.blade.php 以@yield('scriptsAfterjs')引入（因为实际加载的是app.blade.php，因在其引入JS才有效；而现在这个文件只是一些片段，不会实际当做HTML加载）----------- -->
 @section('scriptsAfterJs')
 <script>
 $(document).ready(function() {

@@ -15,7 +15,6 @@ class RegisteredListener implements ShouldQueue
      *
      * @return void
      */
-    //_contruct()用于实例化时，给对象赋初始值
     public function __construct()
     {
         //
