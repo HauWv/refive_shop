@@ -18,4 +18,5 @@
  *
  */
 
-Encore\Admin\Form::forget(['map', 'editor']);
+//不在编辑器中使用括号中的组件
+Encore\Admin\Form::forget(['map']);
