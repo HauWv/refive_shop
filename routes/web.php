@@ -15,6 +15,8 @@
 // Route::get('/','PagesController@root')->name('root');
 Route::redirect('/','/products')->name('root');
 Route::get('products','ProductsController@index')->name('products.index');
+Route::get('products/{product}','ProductsController@show')->name('products.show');
+
 
 //这个路由包含了Login/Register/Resetpassword/Forgotpassword控制器
 Auth::routes();
