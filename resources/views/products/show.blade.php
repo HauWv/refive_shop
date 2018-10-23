@@ -31,7 +31,11 @@
         </div>
         <div class="cart_amount"><label>数量</label><input type="text" class="form-control input-sm" value="1"><span>件</span><span class="stock"></span></div>
         <div class="buttons">
+          @if($favored)
+          <button class="btn btn-danger btn-disfavor">取消收藏</button>
+          @else
           <button class="btn btn-success btn-favor">❤ 收藏</button>
+          @endif
           <button class="btn btn-primary btn-add-to-cart">加入购物车</button>
         </div>
       </div>
@@ -58,10 +62,42 @@
 @section('scriptsAfterJs')
 <script>
   $(document).ready(function(){
+    // 库存信息联动功能
     $('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
     $('.sku-btn').click(function(){
       $('.product-info .price span').text($(this).data('price'));
       $('.product-info .stock').text('库存:' + $(this).data('stock') + '件');
+    });
+
+    //收藏按钮
+    //监听收藏按钮的点击事件
+    $('.btn-favor').click(function(){
+      //发起一个post ajax请求
+      axios.post('{{route('products.favor',['product'=>$product->id])}}')
+      .then(function(){   //  请求成功后执行的回调
+        swal('操作成功','','success');
+      },function(error){  //  请求失败后执行的回调
+        //如果返回码是401代表没登录
+        if(error.response && error.response.status === 401){
+          swal('请先登录','','error');
+        }else if(error.response && error.response.data.msg){
+          //其他有msg字段的情况，将msg提示给用户
+          swal(error.response.data.msg,'','error');
+        }else{
+          //其他情况应该是系统出错
+          swal('系统错误','','error');
+        }
+      });
+    });
+    //取消收藏按钮
+    $('.btn-disfavor').click(function(){
+      axios.delete('{{route('products.disfavor',['product'=>$product->id])}}')
+      .then(function(){
+        swal('操作成功','','success')
+          .then(function(){
+            location.reload();
+          });
+      });
     });
   });
 </script>

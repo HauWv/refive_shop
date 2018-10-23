@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\UserAddress;
+use App\Models\Product;
 
 class User extends Authenticatable
 {
@@ -34,8 +35,15 @@ class User extends Authenticatable
 
 
     //由于外键的存在，构建此方法后，可以通过 $user()->addresses方法调用UserAddress，取出关联值；hasMany表示可以取出多个；
-    public function addresses()
-    {
+    public function addresses(){
         return $this->hasMany(UserAddress::class);
+    }
+
+    //构建users表与user_favorite_products表之间的关系
+    public function favoriteProducts(){
+        //多对多的设置：belongsToMany(最终表模型:class，'中间表名')，必须通过中间表作为第二参数
+        return $this->belongsToMany(Product::class,'user_favorite_products')
+        ->withTimestamps() //代表中间表有时间戳字段
+        ->orderBy('user_favorite_products.created_at','desc'); //根据创建时间的降序排列
     }
 }
